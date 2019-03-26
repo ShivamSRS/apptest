@@ -1,6 +1,14 @@
-# dash
+Nimbus magazine app team
 
-A new Flutter application.
+
+lib/main.dart contains boiler plate running code
+
+lib/dashboard.dart contains the main part
+
+Class dashboard is the home page that contains the dashboard style grid
+Class carousel is conected to "The Magazine" tile 
+
+
 
 ## Getting Started
 
