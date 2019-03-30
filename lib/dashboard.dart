@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pdf_viewer/flutter_pdf_viewer.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -100,16 +101,36 @@ class _CarrousselState extends State<Carroussel> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new Center(
-        child: new Container(
-          child: new PageView.builder(
+        child: new GestureDetector(
+          child: new Container(
+            child: new PageView.builder(
               onPageChanged: (value) {
                 setState(() {
                   currentpage = value;
                 });
               },
               controller: controller,
-              itemBuilder: (context, index) => builder(index)),
-        ),
+              itemBuilder: (context, index) => builder(index),
+
+            ),
+          ),
+          onTap: (){
+            PdfViewer.loadAsset(
+              'assets/nimbus8.pdf',
+              config: PdfViewerConfig(
+                nightMode: false,
+                swipeHorizontal: true,
+                autoSpacing: true,
+                pageFling: true,
+                pageSnap: true,
+                enableImmersive: false,
+                autoPlay: false,
+                forceLandscape: false,
+                xorDecryptKey: null,
+              ),
+            );
+          },
+        )
       ),
       floatingActionButton: FloatingActionButton(
         child: Text("Go back"),
